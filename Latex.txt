@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-09-10T15:22:24+04:30
+
+====== Latex ======
+
+Created پنجشنبه 10 سپتامبر 2015
+
+\renewcommand{\familydefault}{\sfdefault}
+This changes the default font family to sans-serif.
+
+
+ To create it with geometry is easy
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\vspace*{3\baselineskip}

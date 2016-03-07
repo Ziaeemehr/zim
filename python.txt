@@ -1,0 +1,85 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-17T15:31:59+03:30
+
+====== python ======
+Created سه‌شنبه 17 نوامبر 2015
+
+S = [x**2 for x in range(10)]
+V = [2**i for i in range(13)]
+M = [x for x in S if x % 2 == 0]
+ 
+print S; print V; print M
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
+[0, 4, 16, 36, 64]
+
+== Making a list of evenly spaced numbers in a certain range ==
+import numpy as np
+//np.linspace(0,5,10) 					#give an array//
+//np.linspace(0,5,10).tolist()			# give a list//
+or
+//[lower + x*(upper-lower)/length for x in range(length)]//
+
+== Read file ==
+''(hardway-Shaw)''
+//from sys import argv//
+//script, filename = argv//
+//txt = open(filename)//
+//print "Here's your file %r:" % filename//
+//print txt.read()//
+
+== importing functions: ==
+//import filename [without extention]//
+//filename.func()//
+//or//
+//from filename import *//
+
+
+//print "Hello, World! sin(%(r)g)=%(s)12.5e" % vars()//
+The syntax %(r)g indicates that a variable with name **r** is to be substituted
+in the string, written in a format described by the character **g** . page 30  langtangen
+
+
+== slicing ==
+//y = np.arange(35).reshape(5,7)//
+//y[1:5:2,::3]//
+
+== Run a MATLAB file from Python 2.7 Shell ==
+import subprocess, os
+os.chdir(r'D:\The_folder_where_the_file_is')
+subprocess.Popen(['matlab','The_desired_Matlab_file.m'])
+
+== Call User Script and Function from Python ==
+[[http://nl.mathworks.com/help/matlab/matlab_external/call-user-script-and-function-from-python.html|here]]
+This example shows how to call a MATLAB® script to compute the area of a triangle from Python®.
+In your current folder, create a MATLAB script in a file named triarea.m.
+b = 5;
+h = 3;
+a = 0.5*(b.* h)
+After you save the file, start Python and call the script.
+import matlab.engine
+eng = matlab.engine.start_matlab()
+eng.triarea(nargout=0)
+a =
+	7.5000
+
+
+	c : character
+
+	d or i : signed decimal integer
+
+	e or E : scientific notation with e or E.
+
+	f : decimal floating point
+
+	g,G : use the shorter of e,E or f
+
+	o : signed octal
+
+	s : string of characters
+
+	u : unsigned decimal integer
+
+	x,X : unsigned hexadecimal integer
+http://docs.scipy.org/doc/numpy-1.10.0/reference/generated/numpy.savetxt.html

@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-02-03T14:14:45+03:30
+
+====== tccw ======
+Created چهارشنبه 03 فوریه 2016
+
+guest
+guestguest
+cp -r [[/home/guest/Fhi*]] .
+jmo/    jmo/.sh
+aims_0
+
+

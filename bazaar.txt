@@ -1,0 +1,153 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-05-24T10:53:39+04:30
+
+[[http://doc.bazaar.canonical.com/latest/en/mini-tutorial/|bazaar]]
+
+Created یکشنبه 24 مه 2015
+
+   ''$ bzr whoami "John Doe <john.doe@gmail.com>"''
+
+'''
+$ bzr whoami
+John Doe <john.doe@gmail.com>
+'''
+
+
+Starting a new project
+
+   //$ bzr init-repo sample//
+''Shared repository with trees (format: 2a)''
+''Location:''
+''  shared repository: sample''
+''$ bzr init sample/trunk''
+''$ cd sample/trunk''
+''Created a repository tree (format: 2a)''
+''Using shared repository: /home/john/sample/''
+
+
+== Adding files ==
+
+Now that we have the trunk, we need to move to that directory and create some example files for the first version of that project. Create a file test1.txt using a text editor (like emacs, nano, or notepad), and save it. Then we’ll “add” the file, which tells bzr we want it to track changes:
+
+	$ ''bzr add test1.txt''
+	$ ''bzr commit -m "Added first line of text"''
+
+
+== Making changes to your files ==
+
+'''
+ $ echo test test test > test1.txt
+ $ bzr add test1.txt
+ adding test1.txt
+'''
+
+
+bzr diff shows the changes between the last revision in this branch, and your current tree (or, with the -r option, between any two trees).
+
+'''
+$ bzr diff
+=== modified file 'test1.txt'
+--- test1.txt   2007-10-08 17:56:14 +0000
++++ test1.txt   2007-10-08 17:46:22 +0000
+@@ -0,0 +1,1 @@
++test test test
+'''
+
+
+== Commit your work to the Bazaar branch: ==
+
+'''
+$ bzr commit -m "Added first line of text"
+Committing to: /home/john/sample/trunk/
+added test1.txt
+Committed revision 1.
+'''
+
+
+== Viewing the revision log ==
+
+You can see the history of your branch by browsing its log:
+
+'''
+$ bzr log
+revno: 1
+committer: John Doe <john.doe@gmail.com>
+branch nick: trunk
+timestamp: Mon 2006-10-08 17:46:22 +0000
+message:
+  Initial import
+'''
+
+
+== Publishing your branch on Launchpad ==
+
+
+The steps to publishing branches on Launchpad are:
+    Create a Launchpad account: visit the Launchpad login page and choose to create a new account.
+    Bazaar uses the SSH encryption and authentication protocol to connect to Launchpad. You need to first create an SSH key on your own computer, by running the command:
+    ''$ ssh-keygen''
+
+    Upload your SSH public key to Launchpad.
+
+    Make a team for your project. Even if you’re starting as the only developer on this project, creating a new one now will let you more easily add other people later.
+    Create a project.
+    Tell Bazaar your Launchpad account name. If your account is john.doe, type
+    ''$ bzr launchpad-login john.doe''
+
+    Push the branch for your project. Once you’ve committed your changes locally, you can publish them as the trunk of your new project by saying
+
+        ''$ bzr push lp:~sample-developers/sample/trunk''
+''   $ bzr branch lp:~a-ziaeemehr/floatingpoint/trunk''
+
+    (Of course, using the team and project names you just chose.)
+Creating your own copy of another branch
+
+To work with someone else’s code, you can make your own copy of their branch. Let’s take a real-world example, Bazaar’s GTK interface:
+
+'''
+$ bzr init-repo ~/bzr-gtk
+$ bzr branch lp:~bzr/bzr-gtk/trunk ~/bzr-gtk/john
+Branched 292 revision(s).
+'''
+
+
+Bazaar will download all the files and complete revision history from the bzr-gtk project’s trunk branch and create a copy called john.
+
+Now, you have your own copy of the branch and can commit changes with or without a net connection. You can share your branch at any time by publishing it and, if the bzr-gtk team want to use your work, Bazaar makes it easy for them to merge your branch back into their trunk branch.
+Updating your branch from the main branch
+
+While you commit changes to your branch, it’s likely that other people will also continue to commit code to the parent branch.
+
+To make sure your branch stays up to date, you should merge changes from the parent into your personal branch:
+
+''$ bzr merge''
+Merging from saved parent location: http://bazaar.launchpad.net/~bzr/bzr-gtk/trunk
+All changes applied successfully.
+
+Check what has changed:
+
+''$ bzr diff''
+
+If different branches have made changes to the same areas of the same files, then merging them may generate conflicts. When this happens, Bazaar puts text markers like <<<<<<< into the files, and records them in a list of conflicted files. You should edit the files to reflect the way you want to resolve the conflicts, use bzr diff to check the changes, and then bzr resolve to mark them as resolved.
+
+If you’re happy with the changes, you can commit them to your personal branch:
+
+'''
+$ bzr commit -m "Merge from main branch"
+Committed revision 295.
+'''
+
+
+Learning more
+
+You can find out more about Bazaar in the Bazaar User Guide.
+
+To learn about Bazaar on the command-line:
+
+	''$ bzr help''
+
+To learn about the ‘’foo’’ topic or command:
+
+	''$ bzr help foo''
+

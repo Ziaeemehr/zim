@@ -1,0 +1,68 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-11-28T23:02:49+03:30
+
+====== gnuplot ======
+
+#! /usr/bin/gnuplot
+set term postscript eps monochrome dashed 'Times-Roman' 28
+set output 'myplot.ps'
+-------------------------------------------------------
+set terminal postscript eps enhanced
+set output "plot-1.eps"
+set title "plot-1"
+-----------------------
+set terminal png
+set output "plot-1.png"
+
+set xrange[-pi:pi]
+set yrange[-2:2]
+set grid               # enable the grid
+-------------------------------------------------------
+set terminal postscript eps enhanced
+set output "plot-4.eps"
+set title "plot-4"
+plot 'MSD.text' u 1:2 w p ps 0.5 pt 7   lc rgb "blue" title "D_x", 'MSD.text' u 1:3 w p ps 0.5 pt 6 title "D_y"
+
+plot for [col=1:10] 'T.txt' using 0:col with lines
+
+== gnuplot : plotting data from multiple input files in a single graph ==
+
+plot "print_1012720" using 1:2 title "Flow 1", \
+	 "print_1058167" using 1:2 title "Flow 2", \
+	 "print_193548"  using 1:2 title "Flow 3", \ 
+	 "print_401125"  using 1:2 title "Flow 4", \
+	 "print_401275"  using 1:2 title "Flow 5", \
+	 "print_401276"  using 1:2 title "Flow 6"
+
+
+== plot 3 dimentional unequal length of data ==
+echo 'splot "data" nonuniform matrix with lines' | gnuplot --persist
+
+
+== Gnuplot plotting data from a file up to some row ==
+//plot "<(sed -n '1000,2000p' filename.txt)" using 1:2 with lines//
+//plot "filename.txt" every ::1000::2000 using 1:2 with lines//
+
+//awk "NR>=1000 && NR<=2000" filename.txt > processed.txt//
+Then use the resulting "processed.txt" in your existing gnuplot command/script.
+
+== How to plot using specific rows of data file with Gnuplot ==
+//plot "my.dat" every A:B:C:D:E:F//
+
+A: line increment
+B: data block increment
+C: The first line
+D: The first data block
+E: The last line
+F: The last data block
+
+To plot the data starting from line 10:
+//plot "my.dat" every ::10//
+To plot the data from line 10 to line 100:
+//plot "my.dat" every ::10::100//
+To plot data starting from the first line till line 100:
+//plot "my.dat" every ::::100//
+
+=== Method Two ===
+plot "<(sed -n '10,100p' my.dat)"

@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-27T21:01:35+03:30
+
+====== git ======
+Created چهارشنبه 27 ژانویه 2016
+
+Set up your local directory
+Set up Git on your machine if you haven't already.
+mkdir [[/path/to/your/project]]
+cd [[/path/to/your/project]]
+git init
+git remote add origin https://ziaeemehr@bitbucket.org/ziaeemehr/numerical_alalysis.git
+
+Create your first file, commit, and push
+
+echo "Abolfazl Ziaeemehr" >> contributors.txt
+git add contributors.txtgit 
+commit -m 'Initial commit with contributors'
+git push -u origin master
+
+
+== I have an existing project ==
+cd [[/path/to/my/repo]]
+git remote add origin https://ziaeemehr@bitbucket.org/ziaeemehr/numerical_alalysis.gitgit 
+push -u origin --all        # pushes up the repo and its refs for the first timegit 
+push -u origin --tags     # pushes up any tags
+
+== Cloning an Existing Repository ==
+git clone https://github.com/libgit2/libgit2
+
+

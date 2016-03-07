@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-10-02T14:12:01+03:30
+
+====== shell ======
+Created جمعه 02 اكتبر 2015
+
+//lscpu//
+The lscpu command reports information about the cpu and processing units. It does not have any further options or functionality.
+
+//inxi -Fx//
+Inxi is a 10K line mega bash script that fetches hardware details from multiple different sources and commands on the system, and generates a beautiful looking report that non technical users can read easily.
+
+du -hs /path/to/directory
+
+
+=== Tar Command Examples in Linux ===
+
+== 1. Create tar Archive File ==
+//tar -cvf tecmint-14-09-12.tar /home/tecmint///
+The below example command will create a tar archive file tecmint-14-09-12.tar for a directory /home/tecmint in current working directory.
+
+	c – Creates a new .tar archive file.
+	v – Verbosely show the .tar file progress.
+	f – File name type of the archive file.
+
+
+== 2. Create tar.gz Archive File ==
+
+//# tar cvzf MyImages-14-09-12.tar.gz /home/MyImages//
+OR
+//# tar cvzf MyImages-14-09-12.tgz /home/MyImages//
+
+== 3. Create tar.bz2 Archive File ==
+
+== Get a count of all files and directories in the current directory ==
+echo * | wc
+or 
+ls | wc -l
+
+make zip without compression
+zip -r -0 out.zip inputfolder
+
+== Split and Join tar.gz file on Linux ==
+
+//$ tar -cvvzf <archive-name>.tar.gz /path/to/folder//
+//$split -b 1M <archive-name>.tar.gz "parts-prefix"//  # without " "
+to join this file, we can use cat command.
+$ //cat vid* > test.tar.gz// 
+

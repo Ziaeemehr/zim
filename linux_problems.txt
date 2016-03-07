@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-06-07T22:59:12+04:30
+
+====== linux problems ======
+Created یکشنبه 07 ژوئن 2015
+
+
+Re: E:Encountered a section with no Package: header, E:Problem with MergeList
+
+    [[http://ubuntuforums.org/showthread.php?t=863742|try]]
+    sudo rm /var/lib/apt/lists/* -vf
+    sudo apt-get update
+
+== How can you completely remove a package? ==
+//sudo apt-get --purge autoremove//
+show IP addres:
+search in "//google what is my ip"//
+$ //ip addr show//
+
+
+== Something is downloading in background linux? ==
+you're on the right track. iftop will show you what addresses your system is communicating with. the next time this starts happening, launch it to see where the data is going, and in another window, launch netstat -tanp. this will show you all active connections by ip address, and the -p flag will show what process on your system is responsible for the socket.
+you can then correlate the two together and go from there.
+http://programming.nullanswer.com/question/24289276
